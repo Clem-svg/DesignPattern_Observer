@@ -1,6 +1,10 @@
 <?php
+namespace App;
 
-class AddedComment implements SplSubject
+use SplSubject;
+use SplObserver;
+
+class Message implements SplSubject
 {
     /**
      * Array of the observers
@@ -15,18 +19,18 @@ class AddedComment implements SplSubject
     public $text_message;
     /**
      * The ID for the blog post that this just added blog comment relates to
-     * @var int
+     * @var string
      */
-    public $user_id;
+    public $user_name;
     /**
-     * Comment constructor - save the $comment_text (for the recently submitted comment) and the $user_id that this blog comment relates to.
-     * @param $comment_text
-     * @param $user_id
+     * Comment constructor - save the $text_message (for the recently submitted comment) and the $user_name that this blog comment relates to.
+     * @param $text_message
+     * @param $user_name
      */
-    public function __construct($text_message, $user_id)
+    public function __construct($text_message, $user_name)
     {
-        $this->text_message = $comment_text;
-        $this->user_id = $user_id;
+        $this->text_message = $text_message;
+        $this->user_name = $user_name;
     }
     /**
      * Add an observer (such as EmailAuthor, EmailOtherCommentators or IncrementCommentCount) to $this->observers so we can cycle through them later

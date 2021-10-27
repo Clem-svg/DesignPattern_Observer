@@ -1,12 +1,18 @@
 <?php
+namespace App;
 
-class User {
+use SplSubject;
+use SplObserver;
+
+class User implements SplObserver {
 
   private int $id;
   private string $name;
+  private $id_generator = 0;
 
-  public function __construct($id, $name)
+  public function __construct($name)
   {
+      $id = $this->id_generator++;
       $this->id = $id;
       $this->name = $name;
   }
@@ -45,5 +51,9 @@ class User {
     $this->name = $name;
 
     return $this;
+  }
+  public function update(SplSubject $subject)
+  {
+      echo __METHOD__ . " " . $subject->user_name . " got a new message  " . $subject->text_message . " from ". $this->name ."\n";
   }
 }
