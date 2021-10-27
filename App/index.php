@@ -14,9 +14,11 @@ $user1Name =$user1->getName();
 
 
 echo "Adding observers to subject\n";
-$newMessage = new Message($new_message,$user1Name); 
+$newMessage = new Message($new_message,$user1Name);
 
-$newMessage->attach($user2);  
+$newMessage->attach($user2);
+$newMessage->detach($user2);
 echo "Now going to notify() them...\n";
 $newMessage->notify();
 echo "Done\n";
+
