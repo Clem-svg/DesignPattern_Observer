@@ -1,5 +1,8 @@
 <?php
 
+namespace App;
+
+use SplObserver;
 
 interface SplSubject {
 /* Methods */
